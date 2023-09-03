@@ -7,10 +7,10 @@ export const AppContext = (props) => {
     const [loading, setLoading] = useState(false);
     const [feedData, setfeedData] = useState([]);
     const [searchResult, setsearchResult] = useState(false);
-    const [selectedCategories, setselectedCategories] = useState("New");
+    const [selectedCategories, setselectedCategories] = useState("new");
 
     useEffect(() => {
-        const data = fetchDatafromAPI();
+        const data = fetchDatafromAPI(selectedCategories);
         data.then((data) => {
             setfeedData(data.items)
         });

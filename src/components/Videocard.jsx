@@ -9,11 +9,10 @@ const Videocard = ( props ) => {
             <div id='about-video' className='flex items-center'>
                 <img
                     id='channelProfile'
-                    className='h-8 w-8 rounded-3xl mr-2 relative bottom-2'
+                    className='h-4 w-8 rounded-3xl mr-2 relative bottom-2'
                     src={ props.thumbnail } alt="profile" />
                 <div>
                     <p id='title' className='m-1 capitalize text-sm font-semibold tracking-wide'>{ props.title }</p>
-                    {/* <p id='desc' className='capitalize text-sm'>{ props.desc }</p> */}
                 </div>
             </div>
         </div>

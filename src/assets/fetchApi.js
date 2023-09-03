@@ -1,4 +1,4 @@
-const url = 'https://youtube-v31.p.rapidapi.com/search?q=music&part=snippet%2Cid&regionCode=US&maxResults=50&order=date';
+const base_url = 'https://youtube-v31.p.rapidapi.com/';
 
 const options = {
     method: 'GET',
@@ -8,10 +8,15 @@ const options = {
     }
 };
 
-export const fetchDatafromAPI = async () => {
+export const fetchDatafromAPI = async (query) => {
     return (
-        fetch(url, options)
-            .then(res => { return res.json() })
-            .catch((error)=>{console.warn(error)})
+        fetch(`${base_url}search?q=${query}&part=snippet%2Cid&maxResults=50`, options)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json()
+            })
+            .catch((error) => { console.warn(error) })
     )
 }
