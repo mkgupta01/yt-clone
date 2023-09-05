@@ -6,6 +6,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';                        
 import { Context } from '../assets/contextAPI'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     
@@ -32,7 +33,7 @@ const Navbar = () => {
 
     return (
         <div className='flex items-center justify-between h-[10%] px-8 bg-light-white dark:bg-dark-black fixed top-0 left-0 w-full z-10'>
-            <img className='h-14 w-14' src={logo} alt="logo" />
+            <Link to={'/'}> <img className='h-14 w-14' src={logo} alt="logo" /> </Link>
             <div className="relative">
                 <input
                     className="h-10 w-[32rem] border border-dark-black pl-12 pr-4 rounded-3xl outline-none"

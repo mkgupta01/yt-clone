@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { fetchDatafromAPI } from "./fetchApi";
+import { fetchDatafromAPI, searchVideoDetails } from "./fetchApi";
 
 export const Context = createContext();
 
@@ -8,6 +8,9 @@ export const AppContext = (props) => {
     const [feedData, setfeedData] = useState([]);
     const [searchResult, setsearchResult] = useState(false);
     const [selectedCategories, setselectedCategories] = useState("new");
+    const [videoID, setvideoID] = useState();
+    const [videoData, setvideoData] = useState([]);
+
 
     useEffect(() => {
         const data = fetchDatafromAPI(selectedCategories);
@@ -16,6 +19,13 @@ export const AppContext = (props) => {
         });
     }, [selectedCategories])
 
+    useEffect(() => {
+        const data = searchVideoDetails(videoID);
+        data.then((data)=>{
+            setvideoData(data.items);
+        })
+    }, [videoID])
+
     const contextValues = {
         loading,
         setLoading,
@@ -23,7 +33,11 @@ export const AppContext = (props) => {
         searchResult,
         setsearchResult,
         selectedCategories,
-        setselectedCategories
+        setselectedCategories,
+        videoData,
+        setvideoData,
+        videoID,
+        setvideoID
     };
 
     return (

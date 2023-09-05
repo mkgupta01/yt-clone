@@ -20,3 +20,16 @@ export const fetchDatafromAPI = async (query) => {
             .catch((error) => { console.warn(error) })
     )
 }
+
+export const searchVideoDetails = async (id) =>{
+    return(
+        fetch(`https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${id}`,options)
+        .then((res)=>{
+            if(!res.ok){
+                throw new Error(`HTTP error! Status: ${res.status}`)
+            }
+            return res.json()
+        })
+        .catch((error)=>{ console.warn(error) })
+    )
+}
